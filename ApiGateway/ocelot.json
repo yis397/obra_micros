@@ -1,0 +1,116 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Material",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "Key": "Materiales",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "concepto-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Material",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+      //"RouteClaimsRequirement": {
+      //  "Rol": "Administrator"
+      //}
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/api/Material/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "concepto-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Material/{id}",
+      "DelegatingHandlers": [
+        "BasicHandler"
+      ]
+    },
+    /////
+    {
+      "UpstreamPathTemplate": "/api/Usuarios/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "trabajadores-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Usuarios/{id}"
+    },
+
+    ///
+    {
+      "UpstreamPathTemplate": "/api/Usuarios/registrar",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "trabajadores-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Usuarios/registrar"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/Usuarios/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "trabajadores-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Usuarios/login"
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/Usuarios",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+
+        {
+          "Host": "trabajadores-api",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Usuarios",
+      "Key": "Trabajadores"
+    }
+
+  ],
+  "Aggregates":[
+    {
+      "RouteKeys": [
+        "Materiales",
+        "Trabajadores"
+      ],
+      "UpstreamPathTemplate": "/todos"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8001"
+  }
+
+}

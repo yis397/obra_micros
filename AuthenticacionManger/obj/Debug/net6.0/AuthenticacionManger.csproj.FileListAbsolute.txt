@@ -1,0 +1,12 @@
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\bin\Debug\net6.0\AuthenticacionManger.deps.json
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\bin\Debug\net6.0\AuthenticacionManger.dll
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\bin\Debug\net6.0\AuthenticacionManger.pdb
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.csproj.AssemblyReference.cache
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.AssemblyInfoInputs.cache
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.AssemblyInfo.cs
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.csproj.CoreCompileInputs.cache
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.dll
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\refint\AuthenticacionManger.dll
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\AuthenticacionManger.pdb
+C:\Users\Jesus A\Desktop\Nueva carpeta\Obra\AuthenticacionManger\obj\Debug\net6.0\ref\AuthenticacionManger.dll

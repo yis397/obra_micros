@@ -1,0 +1,75 @@
+version: '3.4'
+networks:
+  backend:
+
+
+services:
+  conceptosdb:
+    image: mongo
+    ports:
+      - 18001:27017
+    networks:
+      - backend
+
+  conceptos:
+    container_name: concepto-api
+    image: ${DOCKER_REGISTRY-}conceptos
+    build:
+      context: .
+      dockerfile: Conceptos/Dockerfile
+    ports:
+      - 8002:80
+    networks:
+      - backend
+    environment:
+      - DB_HOST=conceptosdb
+      - DB_NAME=materiales
+    depends_on:
+      - conceptosdb
+
+
+  trabajadoresdb:
+    container_name: trabajadores-db
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1Arrepientete97@
+    networks:
+      - backend
+    ports:
+      - "1433:1433"
+
+    
+  trabajadores:
+    container_name: trabajadores-api
+    image: ${DOCKER_REGISTRY-}trabajadores
+    build:
+      context: .
+      dockerfile: Trabajadores/Dockerfile
+    ports:
+      - 8003:80
+    networks:
+      - backend
+    environment:
+      - DB_HOST=trabajadoresdb
+      - DB_NAME=Seguridad
+      - DB_SA_PASSWORD=1Arrepientete97@
+    depends_on:
+      - trabajadoresdb
+      
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    networks:
+     - backend
+    environment:
+      - URL_TRA=http://apigateway
+     
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+     - 8001:80
+
+

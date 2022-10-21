@@ -1,0 +1,92 @@
+name: dockercompose13500586047257819674
+services:
+  apigateway:
+    build:
+      context: C:\Users\Jesus A\Desktop\Nueva carpeta\Obra
+      dockerfile: ApiGateway/Dockerfile
+    container_name: api-gateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: apigateway
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8001"
+      protocol: tcp
+  conceptos:
+    build:
+      context: C:\Users\Jesus A\Desktop\Nueva carpeta\Obra
+      dockerfile: Conceptos/Dockerfile
+    container_name: concepto-api
+    depends_on:
+      conceptosdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: conceptosdb
+      DB_NAME: materiales
+    image: conceptos
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8002"
+      protocol: tcp
+  conceptosdb:
+    image: mongo
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 27017
+      published: "18001"
+      protocol: tcp
+  trabajadores:
+    build:
+      context: C:\Users\Jesus A\Desktop\Nueva carpeta\Obra
+      dockerfile: Trabajadores/Dockerfile
+    container_name: trabajadores-api
+    depends_on:
+      trabajadoresdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: trabajadoresdb
+      DB_NAME: Seguridad
+      DB_SA_PASSWORD: 1Arrepientete97@
+    image: trabajadores
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8003"
+      protocol: tcp
+  trabajadoresdb:
+    container_name: trabajadores-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: 1Arrepientete97@
+    image: mcr.microsoft.com/mssql/server:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+networks:
+  backend:
+    name: dockercompose13500586047257819674_backend
